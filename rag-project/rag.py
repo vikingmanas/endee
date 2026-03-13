@@ -1,17 +1,17 @@
 from embed import get_embedding
+from pdf_loader import load_pdf
 
-documents = [
-    "AI is artificial intelligence",
-    "Vector database stores embeddings",
-    "RAG means retrieval augmented generation"
-]
-
+documents = []
 doc_embeddings = []
 
 
 def setup():
 
-    global doc_embeddings
+    global documents, doc_embeddings
+
+    text = load_pdf("data/sample.pdf")
+
+    documents = text.split("\n")
 
     doc_embeddings = [get_embedding(d) for d in documents]
 
